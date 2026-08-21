@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -I.
 
-TARGET = main
+TARGET = server
 SRC = $(shell find . -name '*.c')
 OBJ = $(SRC:.c=.o)
 
