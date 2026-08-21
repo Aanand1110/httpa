@@ -1,8 +1,17 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -g
+CFLAGS = -Wall -Wextra -I.
 
-build:
-	$(CC) $(CFLAGS) main.c -o client
+TARGET = main
+SRC = $(shell find . -name '*.c')
+OBJ = $(SRC:.c=.o)
+
+build: $(TARGET)
+
+$(TARGET): $(OBJ)
+	$(CC) $(OBJ) -o $(TARGET)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -r client
+	rm -f $(OBJ) $(TARGET)
