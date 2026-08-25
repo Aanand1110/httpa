@@ -53,11 +53,10 @@ int main(){
 		char msg[] = "Hello";
 		send(client_fd, msg, strlen(msg), 0);
 		// 8. Close client connection
-		//close(client_fd);
+		close(client_fd);
+		// 9. Close server socket
+		//close(server_fd);
 	}
-
-	// 9. Close server socket
-	close(server_fd);
 
 	return 0;
 }

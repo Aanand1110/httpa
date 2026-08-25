@@ -24,12 +24,13 @@ int main(){
 	int connect_ret_value= connect(sockfd,(struct sockaddr *)&server_addr,sizeof(server_addr));
 	if(connect_ret_value == -1){
 		printf("Connection failed\n");
-		exit(connect_ret_value);
+		//exit(connect_ret_value);
 	}
 
 	// 4. Send data
-	char msg[] = "Say Hello\n";
+	char msg[] = "GET /api/user?id=1\r\nHost: example.com\r\nContent-Type: Text\r\nContent-Length: 32\r\nConnection: close\r\n\r\nThis is the body of the request.";
 
+	printf("%s",msg);
 	send(sockfd, msg, strlen(msg), 0);
 
 	// 5. Receive response
@@ -45,12 +46,12 @@ int main(){
 	}
 
 	// 6. Close socket
-	int close_ret_val = close(sockfd);
-	if (close_ret_val == 0){
-		printf("Connection closed sussfully.\n");
-	}else{
-		printf("Something went wrong while closing the connection.");
-	}
+	//int close_ret_val = close(sockfd);
+	//if (close_ret_val == 0){
+		//printf("Connection closed sussfully.\n");
+	//}else{
+		//printf("Something went wrong while closing the connection.");
+	//}
 
 	return 0;
 }
